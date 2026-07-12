@@ -1,0 +1,19 @@
+{
+  "name": "RadioStats API",
+  "description": "A modern Flask API.",
+  "repository": "https://github.com/ffpereira-fct/radio",
+  "env": {
+    "DATABASE_URL": {
+      "description": "Database connection URL.",
+      "generator": "postgresql"
+    },
+    "SECRET_KEY": {
+      "description": "A secret key used to sign tokens.",
+      "generator": "secret"
+    },
+    "GEMINI_API_KEY": {
+      "description": "API key for Gemini integration.",
+      "required": false
+    }
+  }
+}

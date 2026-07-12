@@ -1,0 +1,501 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "IBM Plex Sans", system-ui, sans-serif;
+  --color-primary: #252121;
+  --color-secondary: #7C786B;
+  --color-accent: #FFD13E;
+  --color-accent-hover: #ffdf77;
+}
+
+
+body {
+  margin: 0;
+  /*background-image: url('./assets/noise.png');*/
+  /*background-image: url("https://www.transparenttextures.com/patterns/60-lines.png");*/
+  /* banger background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");*/
+  /*background-image: url("https://www.transparenttextures.com/patterns/asfalt-light.png");*/
+  /*background-image: url("https://www.transparenttextures.com/patterns/navy.png");*/
+  /*background-image: url("https://www.transparenttextures.com/patterns/paper-2.png");*/
+  /*background-image: url("https://www.transparenttextures.com/patterns/paper-fibers.png");*/
+  /*background-image: url("https://www.transparenttextures.com/patterns/redox-01.png");*/
+  /*background-image: url("https://www.transparenttextures.com/patterns/shattered-dark.png");*/
+  /*background-image: url("https://www.transparenttextures.com/patterns/subtle-white-feathers.png");*/
+  /*background-image: url("https://www.transparenttextures.com/patterns/wavecut.png");*/
+  /*background-image: url("https://www.transparenttextures.com/patterns/wood.png");*/
+  /*background-image: url("https://www.transparenttextures.com/patterns/worn-dots.png");*/
+  background-image: url('./assets/wavecut.png');
+}
+
+
+* {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+*::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* Simple class to add #FFD13E scrollbar */
+.with-scrollbar {
+  scrollbar-width: auto !important;
+  scrollbar-color: #FFD13E whitesmoke !important;
+  -ms-overflow-style: auto !important;
+}
+
+.btn-primary {
+  @apply cursor-pointer bg-primary rounded-md text-accent font-semibold hover:bg-accent border border-primary hover:text-primary hover:scale-105 ease-in-out duration-200
+}
+
+.btn-accent {
+  @apply cursor-pointer bg-accent rounded-md text-primary font-semibold hover:bg-primary border border-accent hover:text-accent hover:scale-105 ease-in-out duration-200
+}
+
+.spinner {
+  @apply w-8 h-8 border-4 border-accent border-t-transparent rounded-full animate-spin;
+}
+
+.input-field{
+  @apply w-full px-3 py-2 bg-gray-100 border border-primary rounded-md shadow-sm focus:outline-accent focus:border-accent
+}
+
+@layer base {
+  h1 {
+    @apply text-3xl font-bold;
+  }
+}
+
+.nav-item .active {
+  background-color: #def;
+}
+
+.More {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: right;
+}
+
+.dropdown-item, .dropdown-item.active {
+  color: #444;
+}
+
+.nav-item .active, .dropdown-item.active {
+  background-color: #def;
+}
+
+
+.wave {
+  z-index: -1;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) translateY(50%);
+  vertical-align: middle;
+  -webkit-mask-image: -webkit-radial-gradient(center, ellipse cover, rgba(0, 0, 0, 1) 20%, transparent 55%, transparent 100%);
+  mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 1) 20%, transparent 55%, transparent 100%);
+}
+.wave svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+
+
+
+
+/* Dual Range Slider */
+.dual-range-slider {
+    position: relative;
+    width: 100%;
+}
+
+.dual-range-slider .thumb {
+    position: absolute;
+    pointer-events: none;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 0;
+    width: 100%;
+    outline: none;
+}
+
+.dual-range-slider .thumb::-webkit-slider-thumb {
+    pointer-events: all;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #FFD13E;
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+    transition: transform 0.2s ease;
+}
+.dual-range-slider .thumb::-webkit-slider-thumb:hover {
+    transform: scale(1.25);
+}
+
+.dual-range-slider .slider {
+    position: relative;
+    height: 4px;
+    background: #ddd;
+    border-radius: 2px;
+}
+
+
+.dual-range-slider .slider-track {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: #ddd;
+    border-radius: 2px;
+}
+
+.dual-range-slider .slider-range {
+    position: absolute;
+    height: 100%;
+    background: #FFD13E;
+    border-radius: 2px;
+}
+
+.dual-range-slider .thumb-left {
+    z-index: 2;
+}
+
+.dual-range-slider .thumb-right {
+    z-index: 1;
+}
+
+
+
+
+/* Vinyl Cover and Disc */
+.album {
+  --album-size: 300px;
+  --vinyl-size: 280px;
+  --border-radius: 3px;
+  --cover-translate: -10px;
+  --cover-rotate: -2deg;
+  --vinyl-translate: 50%;
+  --vinyl-rotate: 360deg;
+
+  position: relative;
+  width: var(--album-size);
+  height: var(--album-size);
+  /*margin: 1rem 100px;*/
+}
+
+.album .cover {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  /*box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);*/
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  z-index: 2;
+  transition: transform 0.5s ease-in-out;
+}
+
+.album .cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/*
+.album .cover::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 10%;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.4) 1%, transparent 50%);
+  pointer-events: none;
+  z-index: 3;
+}
+
+.album .cover::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent 4%),
+    linear-gradient(
+      225deg,
+      rgba(162, 162, 162, 0.1) 0%,
+      rgba(162, 162, 162, 0.2) 4%,
+      rgba(255, 255, 255, 0.2) 6%,
+      rgba(255, 255, 255, 0.6) 7%,
+      rgba(255, 255, 255, 0.2) 7%,
+      rgba(218, 218, 218, 0.04) 7%,
+      transparent 6%
+    ),
+    linear-gradient(
+      45deg,
+      rgba(14, 14, 14, 0.7),
+      rgba(0, 0, 0, 0.5) 0%,
+      rgba(0, 0, 0, 0.2) 4%,
+      rgba(14, 14, 14, 0.2) 6%,
+      rgba(255, 255, 255, 0.3) 7%,
+      rgba(218, 218, 218, 0.4) 7%,
+      transparent 8%
+    );
+  pointer-events: none;
+  z-index: 3;
+}
+ */
+.album .vinyl {
+  position: absolute;
+  top: 10px;
+  right: 0;
+  width: var(--vinyl-size);
+  height: var(--vinyl-size);
+  border-radius: 50%;
+  background: conic-gradient(from 50deg at 50% 50%, transparent 46%, rgba(255, 255, 255, 0.1) 48%, rgba(255, 255, 255, 0.15) 51%, transparent 56%),
+    conic-gradient(from 225deg at 50% 50%, transparent 46%, rgba(255, 255, 255, 0.1) 48%, rgba(255, 255, 255, 0.15) 51%, transparent 56%),
+    repeating-radial-gradient(circle, rgba(120, 120, 120, 0.1) 0%, rgba(192, 192, 192, 0.01) 1px, transparent 1px, transparent 4px),
+    black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translateX(0) rotate(270deg);
+  transition: transform 0.5s ease-in-out;
+  /*box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);*/
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.album .vinyl .vinyl-cover {
+  width: calc(var(--vinyl-size) / 2.8);
+  height: calc(var(--vinyl-size) / 2.8);
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%;
+  box-shadow: 0 0 0 5px black;
+}
+
+.album:hover .cover {
+  transform: translateX(var(--cover-translate)) rotate(var(--cover-rotate));
+}
+
+.album:hover .vinyl {
+  transform: translateX(var(--vinyl-translate)) rotate(var(--vinyl-rotate));
+}
+
+
+.album.normal {
+  --album-size: 240px;
+  --vinyl-size: 220px;
+  --border-radius: 2px;
+  --cover-translate: -7.5px;
+  --cover-rotate: -1.5deg;
+  --vinyl-translate: 50%;
+  --vinyl-rotate: 360deg;
+}
+
+.album.small {
+  --album-size: 150px;
+  --vinyl-size: 130px;
+  --border-radius: 2px;
+  --cover-translate: -5px;
+  --cover-rotate: -1deg;
+  --vinyl-translate: 50%;
+  --vinyl-rotate: 360deg;
+}
+
+/*
+.album.very-small {
+  --album-size: 100px;
+  --vinyl-size: 80px;
+  --border-radius: 1px;
+  --cover-translate: -3px;
+  --cover-rotate: -1deg;
+  --vinyl-translate: 50%;
+  --vinyl-rotate: 360deg;
+}
+*/
+
+/* tiny */
+.album.very-small {
+  --album-size: 80px;
+  --vinyl-size: 60px;
+  --border-radius: 1px;
+  --cover-translate: -3px;
+  --cover-rotate: -1deg;
+  --vinyl-translate: 50%;
+  --vinyl-rotate: 360deg;
+}
+
+.album.open .cover {
+  transform: translateX(var(--cover-translate)) rotate(var(--cover-rotate));
+}
+
+.album.open .vinyl {
+  transform: translateX(var(--vinyl-translate)) rotate(var(--vinyl-rotate));
+}
+
+.container-top {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+  justify-content: space-between;
+}
+
+.container-top.smaller {
+  min-width: 600px;
+}
+
+/* When playing, use the same transforms as hover */
+.album.playing .cover {
+  transform: translateX(var(--cover-translate)) rotate(var(--cover-rotate));
+}
+
+.album.playing .vinyl {
+  transform: translateX(var(--vinyl-translate)) rotate(var(--vinyl-rotate));
+}
+
+/* Add continuous rotation on vinyl while playing */
+.album.playing .vinyl .vinyl-cover {
+  animation: spin 4s linear infinite;
+}
+
+.album.broken .vinyl {
+  transform: rotate(0deg) !important;
+  animation: none !important;
+  filter: brightness(0.4) contrast(1.5);
+}
+
+.album.broken .vinyl::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  pointer-events: none;
+}
+
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+
+/* Circle Menu */
+.menu-container {
+  position: fixed;
+  top: 0;
+  right: 0;
+}
+
+.icon {
+  position: absolute;
+  color: #000;
+  cursor: pointer;
+  width: 36px;
+  height: 36px;
+}
+
+/* Same positioning as before */
+.home-icon {
+  bottom: 32px;
+  left: 90px;
+}
+
+.search-icon {
+  bottom: 95px;
+  left: 33px;
+}
+
+
+/* Base styles */
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: inset 0 0 2px #000;
+}
+
+.medium-circle {
+  top: -460px;
+  right: -460px;
+  width: 460px;
+  height: 460px;
+  border-radius: 50%;
+  background:
+    conic-gradient(from 50deg at 50% 50%, transparent 46%, rgba(255, 255, 255, 0.2) 48%, rgba(255, 255, 255, 0.3) 51%, transparent 56%),
+    conic-gradient(from 225deg at 50% 50%, transparent 46%, rgba(255, 255, 255, 0.2) 48%, rgba(255, 255, 255, 0.3) 51%, transparent 56%),
+    repeating-radial-gradient(circle, rgba(200, 200, 200, 0.2) 0%, rgba(255, 255, 255, 0.05) 1px, transparent 1px, transparent 4px),
+    #1a1a1a;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3), 0 0 6px rgba(0, 0, 0, 0.5);
+  animation: spin 8s linear infinite;
+  z-index: 0;
+}
+
+.small-circle {
+  background: #FFD13E;
+  top: -300px;
+  right: -300px;
+  width: 300px;
+  height: 300px;
+}
+
+/* Menu buttons */
+.hamburger,
+.close {
+  position: absolute;
+  top: -60px; /* Adjusted for smaller size */
+  right: -60px; /* Adjusted for smaller size */
+  width: 120px; /* Reduced size */
+  height: 120px; /* Reduced size */
+  border-radius: 50%;
+  background: #252121;
+  cursor: pointer;
+  border: 4px solid #252121;
+  /*box-shadow: 0 0 5px #333;*/
+}
+
+.close {
+  background: #7C786B;
+  /*box-shadow: inset 0 0 10px #000;*/
+}
+
+.circle i {
+  color: #000;
+  cursor: pointer;
+  position: absolute;
+}
+
+/* Positioning icons */
+.small-circle .fa-home {
+  bottom: 32px;
+  left: 90px;
+}
+.small-circle .fa-search {
+  bottom: 95px;
+  left: 33px;
+}
+
+/* Tooltip label */
+.label {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 3px 9px;
+  border: 1px solid #000;
+  color: #000;
+  border-radius: 5px;
+  font-size: 14px;
+  pointer-events: none;
+}
+
